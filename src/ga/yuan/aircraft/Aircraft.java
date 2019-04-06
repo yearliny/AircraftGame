@@ -8,7 +8,7 @@ import java.awt.image.BufferedImage;
  * 飞机类，拥有飞机的图片、坐标、飞行速度、角度等属性，并具有操控飞机移动的方法
  */
 
-public class Aircraft extends  GameObject{
+public class Aircraft extends GameObject {
     private BufferedImage img;
     private boolean live = true;
     private boolean up, down, left, right;
@@ -22,8 +22,8 @@ public class Aircraft extends  GameObject{
         speed = 7;
     }
 
-    public void setLive(boolean live) {
-        this.live = live;
+    boolean isLive() {
+        return live;
     }
 
     //如果活着就画出来飞机，如果死了则写出来Game Over。
@@ -60,12 +60,12 @@ public class Aircraft extends  GameObject{
         }
     }
 
-    public boolean isLive() {
-        return live;
+    void setLive(boolean live) {
+        this.live = live;
     }
 
     //获取按键事件，因此设定移动属性
-    public void addDirection(KeyEvent e) {
+    void addDirection(KeyEvent e) {
         switch (e.getKeyCode()) {
             case KeyEvent.VK_LEFT: left = true; break;
             case KeyEvent.VK_UP: up = true; break;
@@ -75,7 +75,7 @@ public class Aircraft extends  GameObject{
     }
 
     //获取释放按键事件，因此取消移动属性
-    public void delDirection(KeyEvent e) {
+    void delDirection(KeyEvent e) {
         switch (e.getKeyCode()) {
             case KeyEvent.VK_LEFT: left = false; break;
             case KeyEvent.VK_UP: up = false; break;

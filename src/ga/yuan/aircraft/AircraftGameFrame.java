@@ -11,10 +11,10 @@ import java.util.Date;
  */
 
 public class AircraftGameFrame extends GameFrame {
-    private Image background = GameUtil.getImage("images/background.png");
-    private Image boom = GameUtil.getImage("images/boom.gif");
-    private Aircraft player = new Aircraft("images/player.png",
-            Constant.PLAYER_INIT_LOCATION_X, Constant.PLAYER_INIT_LOCATION_Y);
+
+    private final Image background = GameUtil.getImage("images/background.png");
+    private final Image boom = GameUtil.getImage("images/boom.gif");
+    private final Aircraft player = new Aircraft("images/player.png", Constant.PLAYER_INIT_LOCATION_X, Constant.PLAYER_INIT_LOCATION_Y);
     private ArrayList<Bullet> bulletList = new ArrayList<>();
     private Date startDate, endDate;
 
@@ -31,19 +31,33 @@ public class AircraftGameFrame extends GameFrame {
                 player.setLive(false);
                 endDate = new Date();
             }
-            if (!player.isLive()){
-                g.drawImage(boom, (int)player.x, (int)player.y, null);
-                int period = (int)((endDate.getTime() - startDate.getTime())/1000);
+            if (!player.isLive()) {
+                g.drawImage(boom, (int) player.x, (int) player.y, null);
+                int period = (int) ((endDate.getTime() - startDate.getTime()) / 1000);
                 printInfo(g, "你坚持了" + period + "秒", 109, 400, 51, Color.GRAY);
                 printInfo(g, "你坚持了" + period + "秒", 110, 400, 50, Color.GREEN);
-                switch (period/10){
-                    case 0: printInfo(g, "你的等级是菜鸟", 150, 600, 30, Color.GRAY);break;
-                    case 1: printInfo(g, "你的等级是小鸟", 150, 600, 30, Color.GRAY);break;
-                    case 2: printInfo(g, "你的等级是大鸟", 150, 600, 30, Color.GRAY);break;
-                    case 3: printInfo(g, "你的等级是鸟人", 150, 600, 30, Color.GRAY);break;
-                    case 4: printInfo(g, "你的等级是鸟王子", 150, 600, 30, Color.GRAY);break;
-                    case 5: printInfo(g, "你的等级是神", 150, 600, 30, Color.GRAY);break;
-                    default: printInfo(g, "你的等级是大神", 150, 600, 30, Color.GRAY);break;
+                switch (period / 10) {
+                    case 0:
+                        printInfo(g, "你的等级是菜鸟", 150, 600, 30, Color.GRAY);
+                        break;
+                    case 1:
+                        printInfo(g, "你的等级是小鸟", 150, 600, 30, Color.GRAY);
+                        break;
+                    case 2:
+                        printInfo(g, "你的等级是大鸟", 150, 600, 30, Color.GRAY);
+                        break;
+                    case 3:
+                        printInfo(g, "你的等级是鸟人", 150, 600, 30, Color.GRAY);
+                        break;
+                    case 4:
+                        printInfo(g, "你的等级是鸟王子", 150, 600, 30, Color.GRAY);
+                        break;
+                    case 5:
+                        printInfo(g, "你的等级是神", 150, 600, 30, Color.GRAY);
+                        break;
+                    default:
+                        printInfo(g, "你的等级是大神", 150, 600, 30, Color.GRAY);
+                        break;
                 }
             }
         });
@@ -59,7 +73,7 @@ public class AircraftGameFrame extends GameFrame {
 //        }
     }
 
-    private void printInfo(Graphics g, String str, int x, int y, int size, Color color){
+    private void printInfo(Graphics g, String str, int x, int y, int size, Color color) {
         //获取原属性
         Color thisColor = g.getColor();
         Font thisFont = g.getFont();
